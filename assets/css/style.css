@@ -53,10 +53,10 @@ License URI:http://www.gnu.org/licenses/gpl-2.0.html
   margin-left: auto;
 }
 
-.container-map {
+#map_container {
     overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: 500px;
     margin: 0;
     font-family: "微软雅黑";
 }
