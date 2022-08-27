@@ -276,7 +276,7 @@ address {
 @media (min-width: 800px){ 
  
     .side-left{
-  height: 1248px;
+  height: 1270px;
 }
  }
 
@@ -379,8 +379,8 @@ p.blog-text{
 }
 
 .office-logo {
-    width: 100px;
-    height: 90px;
+    /*width: 100px;*/
+    height: 60px;
 }
 
 @media (max-width: 768px){ 
