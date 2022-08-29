@@ -3,6 +3,10 @@
 <script src="../js/wow.min.js"></script>
 <script>
     $(document).ready(function () {
+        if (location.pathname === '' || location.pathname === '/index.html') {
+            $(".pull-right").find('li')[0].addClass('active');
+        }
+
         // $("#right-menu li").each(function (){
         $(".pull-right").find('li').each(function (){
             var a = $(this).find("a:first")[0];
