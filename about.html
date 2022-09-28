@@ -23,7 +23,8 @@ permalink: /about
       <br>
 
       <h3>Mission</h3><hr>
-        <h4>{{ site.mission }}.</h4>
+        {% include snippets/get-locale-string.html key='MISSION' %}
+        <h4>{{ __return }}.</h4>
     </div>
     <div class="col-sm-8 col-md-8">
         <h3 id="anchor1"> Who Are We? </h3><hr>
@@ -90,7 +91,7 @@ permalink: /about
 
         <h3 id="anchor5">Our Mission</h3><hr>
         <blockquote>
-          <em>{{ site.mission }}.</em>
+            <em>{{ __return }}.</em>
         </blockquote>
         <br><br>
 

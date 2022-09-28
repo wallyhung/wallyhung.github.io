@@ -1,0 +1,24 @@
+# Change 'comments' to true for Disqus comments
+disqus:
+  comments: false
+  disqus_shortname: 'disabled-disqus'
+
+menu:
+  en:
+   - {uid: 'about', path: 'menu', url: 'about.html'}
+   - {uid: 'service', path: 'menu', url: 'service.html'}
+   - {uid: 'newa', path: 'menu', url: 'news.html'}
+   - {uid: 'team', path: 'menu', url: 'team.html'}
+   - {uid: 'contact', path: 'menu', url: 'contact.html'}
+  zh:
+    - {uid: 'about', path: 'zh/menu', url: 'about.html'}
+    - {uid: 'service', path: 'zh/menu', url: 'service.html'}
+    - {uid: 'newa', path: 'zh/menu', url: 'news.html'}
+    - {uid: 'team', path: 'zh/menu', url: 'team.html'}
+    - {uid: 'contact', path: 'zh/menu', url: 'contact.html'}
+
+social:
+- {show: true, icon: 'github', link: 'https://github.com/lexcao'}
+- {show: true, icon: 'twitter', link: 'https://twitter.com/lexcao'}
+- {show: true, icon: 'envelope', link: 'mailto:lexcao@foxmail.com'}
+- {show: false, icon: 'rss-square', link: '/feed.xml'}
