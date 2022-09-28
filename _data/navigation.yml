@@ -30,7 +30,7 @@ header:
 
   - titles:
       en      : &EN       About
-      zh-Hans : &ZH_HANS  关于
+      zh-Hans : &ZH_HANS  简介
       zh      : *ZH_HANS
     urls:
       en      : /about.html
