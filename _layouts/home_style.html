@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ page.lang | default: zh }}">
 
   {% include head.html %}
   {% include header.html %}
@@ -71,8 +71,8 @@
         <div class="container">
             <div class="row">
                 <div class="services-header">
-                    <h3 class="services-header-title">Our Mission</h3>
-                    <p class="services-header-body"><em> {{ site.mission }} </em>  </p><hr>
+                    <h3 class="services-header-title">{% include snippets/get-locale-string.html key='OUR_MISSION' %}{{ __return }}</h3>
+                    <p class="services-header-body"><em>{% include snippets/get-locale-string.html key='MISSION' %}{{ __return }}</em></p><hr>
                 </div>
             </div>
       

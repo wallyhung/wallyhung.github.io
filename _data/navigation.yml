@@ -1,0 +1,167 @@
+site:
+  titles:
+    en        : Home
+    zh        : 新视野
+  urls:
+    en        : /
+    zh        : /cn/
+  # switch to the other langage
+  urls2:
+    en        : /cn/
+    zh        : /
+  urls2_src:
+    en        : /assets/flag-CN.png
+    zh        : /assets/flag-US.png
+  urls2_alt:
+    en        : "切换到中文"
+    zh        : "Switch to English"
+  archive_url:
+    en        : /en/archive/
+    zh        : /cn/archive/
+
+header:
+  - titles:
+      en: &EN            Home
+      zh-Hans: &ZH_HANS  新视野
+      zh: *ZH_HANS
+    urls:
+      en: /index.html
+      zh: /cn/index.html
+
+  - titles:
+      en      : &EN       About
+      zh-Hans : &ZH_HANS  关于
+      zh      : *ZH_HANS
+    urls:
+      en      : /about.html
+      zh      : /cn/about.html
+
+  - titles:
+      en      : &EN       Service
+      zh-Hans : &ZH_HANS  服务
+      zh      : *ZH_HANS
+    urls:
+      en      : /service.html
+      zh      : /cn/service.html
+
+  - titles:
+      # @start locale config
+      en      : &EN       News
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  新闻
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      # @end locale config
+    urls:
+      en      : /news.html
+      zh      : /cn/news.html
+
+  - titles:
+      # @start locale config
+      en      : &EN       Team
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  团队
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      # @end locale config
+    urls:
+      en      : /team.html
+      zh      : /cn/team.html
+
+  - titles:
+      # @start locale config
+      en: &EN            Contact
+      en-GB: *EN
+      en-US: *EN
+      en-CA: *EN
+      en-AU: *EN
+      zh-Hans: &ZH_HANS  联系
+      zh: *ZH_HANS
+      zh-CN: *ZH_HANS
+      # @end locale config
+    urls:
+      en:     /contact.html
+      zh:     /cn/contact.html
+
+footer:
+  - titles:
+      en      : &EN       Contact
+      zh-Hans : &ZH_HANS  联系
+      zh      : *ZH_HANS
+    urls:
+      en      : /about.html
+      zh      : /cn/about.html
+
+  - titles:
+      en      : &EN       Links
+      zh-Hans : &ZH_HANS  链接
+      zh      : *ZH_HANS
+    urls:
+      en      : /service.html
+      zh      : /cn/service.html
+
+  - titles:
+      en: &EN            Socialize
+      zh-Hans: &ZH_HANS  社交
+      zh: *ZH_HANS
+    urls:
+      en: /service.html
+      zh: /cn/service.html
+
+links:
+  - titles:
+      en: &EN             "About ( Who we are )"
+      zh-Hans: &ZH_HANS   "关于我们"
+      zh     : *ZH_HANS
+    urls:
+      en: /about.html
+      zh: /cn/about.html
+
+  - titles:
+      en: &EN             "Services ( What we do )"
+      zh-Hans: &ZH_HANS   "服务"
+      zh     : *ZH_HANS
+    urls:
+      en: /service.html
+      zh: /cn/service.html
+
+  - titles:
+      en: &EN             "Contact ( Feel free to contact )"
+      zh-Hans: &ZH_HANS   "联系"
+      zh     : *ZH_HANS
+    urls:
+      en: /contact.html
+      zh: /cn/contact.html
+
+  - titles:
+      en: &EN             "Team ( Meet the Team )"
+      zh-Hans: &ZH_HANS   "团队"
+      zh     : *ZH_HANS
+    urls:
+      en: /team.html
+      zh: /cn/team.html
+
+en_categories:
+  - title:      Categories
+    children:
+      - title:  Build Tools
+        url:    /en/categories/build/
+
+cn_categories:
+  - title:      文章类别
+    children:
+      - title:  构建工具
+        url:    /cn/categories/build/
+
+
+series:
+  - title: Series
+    children:
+      - title:  Elasticsearch Snapshots
+        url:    /en/series/es-snapshots/

@@ -14,34 +14,112 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Oriental Horizon Hotel Services
-email: your-email@example.com
+email: business@orientalhorizon.com.cn
 description: > # this means to ignore newlines until "baseurl:"
   Yet another Jekyll theme. It is designed for business purpose and ported by 
   Melvin Ch'ng.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
+# Language and Timezone
+lang: cn
+timezone: Asia/Shanghai
+
 # Company Information
 company_name: Oriental Horizon Hotel Services
-address_line: Via Ludovisi 39-45, Rome, 54267, Italy
+address_line: 1511, Floor 15, Yintai Office Building C, Chaoyang District, Beijing, China
 telephone_number: +86 137 8090 6938
 fax_number: 1.800.245.357
 website: https://www.orientalhorizon.com.cn
 company_email: business@orientalhorizon.com.cn
-mission: We help hotels profit and succeed
+#mission: We help hotels profit and succeed
 google_map: https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3618.727010735933!2d91.837871!3d24.907291700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1404919738144
 
 # Social Link
 wechat_link: https://www.wechat.com
 facebook_link: https://www.facebook.com
 twitter_link: https://www.twitter.com
-linkedin_link: https://www.linkedin.com
+linkedin_link: https://www.linkedin.com/in/oriental-horizon-hotel-services-a89b24248/
 googleplus_link: https://plus.google.com
 
-# Build settings
+# jekyll-pagination-v2 configuration
+pagination:
+  enabled: true
+  per_page: 8
+  permalink: /page/:num/
+  sort_reverse: true
+
+# Build settings, find available plugins in https://pages.github.com/versions/
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+#  - jekyll-paginate-v2
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jemoji # for Emoji
+
+## Search
+#search:
+#  provider: jimi # "default" (default), false, "google", "custom"
+#
+#  ## Google Custom Search Engine
+#  google:
+#    custom_search_engine_id: # Google Custom Search Engine ID
+#
+#defaults:
+#  - scope:
+#      path: ""
+#      type: posts
+#    values:
+#      layout: article
+#      sharing: true
+#      license: true
+#      aside:
+#        toc: true
+#      show_edit_on_github: false
+#      show_subscribe: true
+#      pageview: true
+#  - scope:
+#      path: _cn
+#      type: cn
+#    values:
+#      layout: article
+#      sharing: true
+#      license: true
+#      aside:
+#        toc: true
+#      show_edit_on_github: false
+#      show_subscribe: true
+#      pageview: true
+
+## Collections
+###############################
+#collections:
+#  # Categories are a collection that contains many articles. The articles of
+#  # one category should be very different from the articles from another
+#  # category. One article should avoid having more than 2 categories. It
+#  # represents an important part of your technical stack (skill-tree).
+#  # Examples: build, java, python
+#  displayed_en_categories:
+#    my_label:  Categories
+#    permalink: /en/categories/:name/
+#    output:    true
+#  displayed_cn_categories:
+#    my_label:  文章类别
+#    permalink: /cn/categories/:name/
+#    output:    true
+#
+#  # Series are a collection that contains several articles. A series explains
+#  # one target topic from different angles. It is usually about a framework or
+#  # a project.
+#  series:
+#    my_label:  Series
+#    permalink: /en/series/:name/
+#    output:    true
+#  cn:
+#    promalink: /cn/:title/
+#    output:    true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

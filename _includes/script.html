@@ -2,22 +2,22 @@
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/wow.min.js"></script>
 <script>
-    $(document).ready(function () {
-        if (location.pathname === '/' || location.pathname === '/index.html') {
-            var first = $(".pull-right").find('li')[0];
-            $(first).addClass('active');
-        }
-
-        // $("#right-menu li").each(function (){
-        $(".pull-right").find('li').each(function (){
-            var a = $(this).find("a:first")[0];
-            if ($(a).attr("href") === location.pathname) {
-                $(this).addClass("active");
-            } else {
-                $(this).removeClass("active");
-            }
-        });
-    });
+    // $(document).ready(function () {
+    //     if (location.pathname === '/' || location.pathname === '/index.html') {
+    //         var first = $(".pull-right").find('li')[0];
+    //         $(first).addClass('active');
+    //     }
+    //
+    //     // $("#right-menu li").each(function (){
+    //     $(".pull-right").find('li').each(function (){
+    //         var a = $(this).find("a:first")[0];
+    //         if ($(a).attr("href") === location.pathname) {
+    //             $(this).addClass("active");
+    //         } else {
+    //             $(this).removeClass("active");
+    //         }
+    //     });
+    // });
     new WOW().init();
 
     function loadJScript() {

@@ -3,24 +3,30 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <h3><i class="fa fa-map-marker"></i> Contact:</h3>
+        {% include snippets/get-locale-string.html key='CONTACT' %}
+        <h3><i class="fa fa-map-marker"></i> {{ __return }}</h3>
         <p class="footer-contact">
-          {{ site.company_name }} <br>
-          Phone: {{ site.telephone_number }} <br>
-<!--          Fax: {{ site.fax_number }} <br>-->
-          Email: {{ site.company_email }}<br>
+          {% include snippets/get-locale-string.html key='COMPANY' %}{{ __return }} <br>
+          {% include snippets/get-locale-string.html key='PHONE' %}{{ __return }}: {{ site.telephone_number }}<br>
+          {% include snippets/get-locale-string.html key='EMAIL' %}{{ __return }}: {{ site.company_email }}<br>
         </p>
       </div>
       <div class="col-md-4">
-        <h3><i class="fa fa-external-link"></i> Links</h3>
-        <p><a href="/about"> About ( Who we are )</a></p>
-        <p><a href="/about"> Services ( What we do )</a></p>
-        <p><a href="/contact"> Contact ( Feel free to contact )</a></p>
-        <p><a href="/blog"> Blog ( Write to us )</a></p>
-        <p><a href="/team"> Team ( Meet the Team )</a></p> 
+        {% include snippets/get-locale-string.html key='LINKS' %}
+        <h3><i class="fa fa-external-link"></i> {{ __return }}</h3>
+
+        {%- for _item in site.data.navigation.links -%}
+        {%- include snippets/get-string-from-locale-config.html locale=_item.urls -%}
+        {%- assign _item_url = __return -%}
+
+        {%- include snippets/get-string-from-locale-config.html locale=_item.titles -%}
+        {%- assign _item_title = __return -%}
+        <p><a href="{{ _item_url }}">{{ _item_title }}</a></p>
+        {%- endfor -%}
       </div>
       <div class="col-md-4">
-        <h3><i class="fa fa-heart"></i> Socialize</h3>
+        {% include snippets/get-locale-string.html key='SOCIAL' %}
+        <h3><i class="fa fa-heart"></i> {{ __return }}</h3>
         <div id="social-icons">
           {% if site.wechat_link %}
           <a href="{{ site.wechat_link }}" class="btn-group -wechat">

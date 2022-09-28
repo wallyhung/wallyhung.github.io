@@ -1,4 +1,5 @@
 <!-- Header -->
+
 <nav id="navbar-section" class="navbar navbar-default navbar-static-top navbar-sticky" role="navigation">
   <div class="container">
   
@@ -9,31 +10,81 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
+      <div class="header__brand">
+          {% include snippets/get-string-from-locale-config.html locale=site.data.navigation.site.titles %}
+          {% assign _site_title = __return %}
 
+          {% include snippets/get-string-from-locale-config.html locale=site.data.navigation.site.urls %}
+          {% include snippets/get-nav-url.html path=__return %}
+          {% assign _site_root = __return %}
+
+          {% include snippets/get-string-from-locale-config.html locale=site.data.navigation.site.urls2 %}
+          {% include snippets/get-nav-url.html path=__return %}
+          {% assign _site_root2 = __return %}
+
+          {% include snippets/get-string-from-locale-config.html locale=site.data.navigation.site.urls2_src %}
+          {% assign _site_root2_src = __return %}
+
+          {% include snippets/get-string-from-locale-config.html locale=site.data.navigation.site.urls2_alt %}
+          {% assign _site_root2_alt = __return %}
+
+<!--          <a href="{{ _site_root }}">{{ _site_title }}</a>-->
+      </div>
     <a class="navbar-brand wow fadeInDownBig" href="index.html"><img class="office-logo" src="../assets/img/slider/Oriental.png" alt="oriental_logo"></a>
   </div>
 
   <div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
+    {%- if site.data.navigation.header -%}
     <ul class="nav navbar-nav pull-right" id="right-menu">
-      <li>
-        <a href="/">Home</a>
-      </li>
-      <li>
-        <a href="/about.html">About</a>
-      </li>
-      <li>
-        <a href="/service.html">Service</a>
-      </li>
-      <li>
-        <a href="/news.html">News</a>
-      </li>
-      <li>
-        <a href="/team.html">Team</a>
-      </li>
-      <li>
-        <a href="/contact.html"><span>Contact</span></a>
-      </li>
-    </ul>         
+<!--      <li>-->
+<!--        <a href="/">Home</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="/about.html">About</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="/service.html">Service</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="/news.html">News</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="/team.html">Team</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="/contact.html"><span>Contact</span></a>-->
+<!--      </li>-->
+        {%- for _item in site.data.navigation.header -%}
+        {%- include snippets/get-string-from-locale-config.html locale=_item.urls -%}
+        {%- assign _item_url = __return -%}
+
+        {%- include snippets/get-nav-url.html path=_item_url -%}
+        {%- assign _nav_url = __return -%}
+<!--        _nav_url = /cn/about.html, _page_url = /cn/about, page.path = cn/contact.html -->
+
+        {%- include snippets/get-nav-url.html path=page.url -%}
+        {%- assign _page_url = __return -%}
+
+        {%- include snippets/get-nav-url.html path=page.path -%}
+        {%- assign _page_path = __return -%}
+
+        {%- include snippets/get-string-from-locale-config.html locale=_item.titles -%}
+<!--        <li><a>{{ _item_url }} - {{ page.url }}</a></li>-->
+        {%- if _nav_url == _page_path or _item_url == page.url -%}
+        <li class="active"><a href="{{ _nav_url }}">{%- if _item.title -%}{{ _item.title }}{%- else -%}{{ __return }}{%- endif -%}</a></li>
+        {%- else -%}
+        <li><a href="{{ _nav_url }}">{%- if _item.title -%}{{ _item.title }}{%- else -%}{{ __return }}{%- endif -%}</a></li>
+        {%- endif -%}
+        {%- endfor -%}
+
+<!--  add search bar here-->
+        <li>
+            <a href="{{ _site_root2 }}">
+                <img src="{{ _site_root2_src }}" alt="{{ _site_roo2_alt }}">
+            </a>
+        </li>
+    </ul>
+    {%- endif -%}
   </div>
   </div>
 </nav>
