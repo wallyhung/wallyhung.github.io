@@ -27,36 +27,21 @@
       <div class="col-md-4">
         {% include snippets/get-locale-string.html key='SOCIAL' %}
         <h3><i class="fa fa-heart"></i> {{ __return }}</h3>
+<!--        {% if site.linkedin_link %}-->
+<!--        <a href="{{ site.linkedin_link }}" class="btn-group linkedin">-->
+<!--          <i class="fa fa-linkedin-square"></i>-->
+<!--        </a>-->
+<!--        {% endif %}-->
         <div id="social-icons">
-          {% if site.wechat_link %}
-          <a href="{{ site.wechat_link }}" class="btn-group -wechat">
-            <i class="fa fa-wechat"></i>
-          </a>
-          {% endif %}
-
-          {% if site.linkedin_link %}
-            <a href="{{ site.linkedin_link }}" class="btn-group linkedin">
-              <i class="fa fa-linkedin-square"></i>
-            </a>
-          {% endif %}
-
-          {% if site.twitter_link %}
-            <a href="{{ site.twitter_link }}" class="btn-group twitter">
-              <i class="fa fa-twitter"></i>
-            </a>
-          {% endif %}
-
-          {% if site.facebook_link %}
-            <a href="{{ site.facebook_link }}" class="btn-group facebook">
-              <i class="fa fa-facebook"></i>
-            </a>
-          {% endif %}
+          <img src="../assets/img/social-icons/wechat_business.png" alt="wechat-business" align="center" height="200" width="160">
         </div>
       </div>    
     </div>
   </div>
 
   <div class="copyright text center">
-    <p>&copy; Copyright {{ site.time | date: '%Y' }}, <a href="#">{{ site.website }}</a>. Theme ported by <a href="https://melvinchng.github.io/" target="_blank">Melvin Ch'ng</a></p>
+    <p>&copy; Copyright {{ site.time | date: '%Y' }}, <a href="#">{{ site.website }}</a>
+<!--      Theme ported by <a href="https://melvinchng.github.io/" target="_blank">Melvin Ch'ng</a>-->
+    </p>
   </div>
 </footer>
