@@ -45,6 +45,14 @@ header:
       zh      : /cn/service.html
 
   - titles:
+      en: &EN       Pricing
+      zh-Hans: &ZH_HANS  资费
+      zh: *ZH_HANS
+    urls:
+      en: /pricing.html
+      zh: /cn/pricing.html
+
+  - titles:
       # @start locale config
       en      : &EN       News
       en-GB   : *EN

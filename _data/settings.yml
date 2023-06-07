@@ -7,13 +7,15 @@ menu:
   en:
    - {uid: 'about', path: 'menu', url: 'about.html'}
    - {uid: 'service', path: 'menu', url: 'service.html'}
-   - {uid: 'newa', path: 'menu', url: 'news.html'}
+   - {uid: 'pricing', path: 'pricing', url: 'pricing.html'}
+   - {uid: 'news', path: 'menu', url: 'news.html'}
    - {uid: 'team', path: 'menu', url: 'team.html'}
    - {uid: 'contact', path: 'menu', url: 'contact.html'}
   zh:
     - {uid: 'about', path: 'zh/menu', url: 'about.html'}
     - {uid: 'service', path: 'zh/menu', url: 'service.html'}
-    - {uid: 'newa', path: 'zh/menu', url: 'news.html'}
+    - {uid: 'pricing', path: 'zh/menu', url: 'pricing.html'}
+    - {uid: 'news', path: 'zh/menu', url: 'news.html'}
     - {uid: 'team', path: 'zh/menu', url: 'team.html'}
     - {uid: 'contact', path: 'zh/menu', url: 'contact.html'}
 
