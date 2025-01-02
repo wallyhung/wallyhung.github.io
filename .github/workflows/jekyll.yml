@@ -62,3 +62,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.CLOUD_DEPLOY_SSH }}
+
+      - name: Deploy to Tencent
+        run: |
+          ssh -o StrictHostKeyChecking=no app@81.69.45.49 "mkdir -p /home/app/hotel"
+          rsync -avz --delete --exclude '.git' --exclude '.github' ./_site/ app@81.69.45.49:/home/app/hotel/
