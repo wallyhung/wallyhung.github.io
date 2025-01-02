@@ -65,7 +65,7 @@ jobs:
         
       - name: Deploy to Tencent
         uses: easingthemes/ssh-deploy@v2.0.7
-        with:
+        env:
           SSH_PRIVATE_KEY: ${{ secrets.CLOUD_DEPLOY_SSH }}
           ARGS: "-avz --delete"
           SOURCE: "./_site/"
