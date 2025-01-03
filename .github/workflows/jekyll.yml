@@ -1,77 +1,78 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll site to Pages
+# Workflow for building and deploying a Jekyll site to GitHub Pages and Tencent
+name: Deploy Jekyll Site
 
 on:
-  # Runs on pushes targeting the default branch
+  # Trigger on pushes to the default branch
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allow manual trigger from Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Permissions for GitHub Pages deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Ensure only one concurrent deployment per branch
 concurrency:
-  group: "pages"
+  group: "pages-deploy"
   cancel-in-progress: false
 
 jobs:
-  # Build job
+  # Build Job
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1 # v1.146.0
+
+      - name: Setup Ruby Environment
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
-      - name: Setup Pages
+          ruby-version: '3.1'
+          bundler-cache: true
+          cache-version: 0
+
+      - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v3
-      - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
+
+      - name: Build Jekyll Site
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-      - name: Upload artifact
-        # Automatically uploads an artifact from the './_site' directory by default
+
+      - name: Upload Site Artifact
         uses: actions/upload-pages-artifact@v1
         with:
           name: site-artifact
 
-  # Deployment job
-  deploy:
+  # Deployment Job to GitHub Pages
+  deploy-pages:
+    runs-on: ubuntu-latest
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
 
-      - name: Download artifact
-        uses: actions/download-pages-artifact@v1
+  # Deployment Job to Tencent
+  deploy-tencent:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Site Artifact
+        uses: actions/download-artifact@v3
         with:
           name: site-artifact
           path: _site
-        
-      - name: Deploy to Tencent
+
+      - name: Deploy to Tencent Cloud
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.CLOUD_DEPLOY_SSH }}
