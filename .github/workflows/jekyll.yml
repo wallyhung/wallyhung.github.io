@@ -68,7 +68,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.CLOUD_DEPLOY_SSH }}
           ARGS: "-avz --delete"
-          SOURCE: "./_site/"
+          SOURCE: "_site/"
           TARGET: ${{ secrets.TARGET }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
