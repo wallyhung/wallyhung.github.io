@@ -60,6 +60,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        with:
+          name: site-artifact
 
   # Deployment Job to Tencent
   deploy-tencent:
@@ -70,11 +72,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: site-artifact
+          path: artifact
 
       - name: Extract Artifact
         run: |
           mkdir -p _site
-          tar -xvf site-artifact.tar -C _site
+          tar -xvf artifact/site-artifact.tar -C _site
 
       - name: Deploy to Tencent Cloud
         uses: easingthemes/ssh-deploy@main
