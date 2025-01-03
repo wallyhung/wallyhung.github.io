@@ -70,7 +70,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: site-artifact
-          path: _site
+
+      - name: Extract Artifact
+        run: |
+          mkdir -p _site
+          tar -xvf site-artifact.tar -C _site
 
       - name: Deploy to Tencent Cloud
         uses: easingthemes/ssh-deploy@main
