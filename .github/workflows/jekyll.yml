@@ -1,5 +1,5 @@
-# Workflow for building and deploying a Jekyll site to GitHub Pages and Tencent
-name: Deploy Jekyll Site
+# Workflow for building and deploying a static HTML site to GitHub Pages and Tencent
+name: Deploy Static Site
 
 on:
   # Trigger on pushes to the default branch
@@ -21,33 +21,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build Job
+  # Build Job - package static files
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Ruby Environment
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.1'
-          bundler-cache: true
-          cache-version: 0
-
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v3
 
-      - name: Build Jekyll Site
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
-
       - name: Upload Site Artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          name: site-artifact
+          path: '.'
 
   # Deployment Job to GitHub Pages
   deploy-pages:
@@ -60,31 +48,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        with:
-          name: site-artifact
 
   # Deployment Job to Tencent
   deploy-tencent:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Download Site Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: site-artifact
-          path: artifact
-
-      - name: Extract Artifact
-        run: |
-          mkdir -p _site
-          tar -xvf artifact/site-artifact.tar -C _site
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Deploy to Tencent Cloud
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.CLOUD_DEPLOY_SSH }}
           ARGS: "-avz --delete"
-          SOURCE: "_site/"
+          SOURCE: "./"
           TARGET: ${{ secrets.TARGET }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}

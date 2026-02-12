@@ -1,17 +1,666 @@
----
-layout: home_style
-title: 主页
-lang: zh
-pagination:
-  enabled: true
-  collection: cn
-  sort_field: date
-  sort_reverse: true
-  permalink: '/page:num/'  # relative to /cn/
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>北京新视野酒店服务有限公司</title>
+  <meta name="description" content="我们帮助酒店盈利并获得成功。经验丰富的酒店专业人士提供收入策略、销售市场外包和培训服务。">
+  <link rel="icon" href="../assets/ico/favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700;900&family=Karla:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#1E3A8A', light: '#3B82F6', dark: '#1E40AF' },
+            gold: { DEFAULT: '#CA8A04', light: '#EAB308' },
+            slate: { 50: '#F8FAFC' },
+          },
+          fontFamily: {
+            display: ['"Playfair Display SC"', 'serif'],
+            body: ['"Noto Sans SC"', 'Karla', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="font-body text-navy-dark bg-slate-50">
 
-# hack for "pagination.permalink"
-paginate_pattern: '/cn/page:num/'
+  <!-- ============ NAVIGATION ============ -->
+  <nav id="navbar" class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="#home" class="font-display text-xl font-bold text-navy tracking-wider">
+          Oriental Horizon
+        </a>
 
-# hack for home path
-baseurl: '/cn/'
----
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="nav-link text-sm font-medium text-navy-dark hover:text-navy">首页</a>
+          <a href="#about" class="nav-link text-sm font-medium text-navy-dark hover:text-navy">关于</a>
+          <a href="#services" class="nav-link text-sm font-medium text-navy-dark hover:text-navy">服务</a>
+          <a href="#pricing" class="nav-link text-sm font-medium text-navy-dark hover:text-navy">资费</a>
+          <a href="#team" class="nav-link text-sm font-medium text-navy-dark hover:text-navy">团队</a>
+          <a href="#contact" class="nav-link text-sm font-medium text-navy-dark hover:text-navy">联系</a>
+          <!-- Language Switcher -->
+          <a href="../index.html" class="flex items-center space-x-1 text-sm text-navy-dark hover:text-navy transition">
+            <img src="../assets/flag-US.png" alt="EN" class="w-5 h-4 object-cover rounded-sm"> <span>EN</span>
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-white/50 transition" aria-label="菜单">
+          <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 md:hidden">
+      <div class="p-6">
+        <button id="menu-close" class="mb-8 p-2 rounded-lg hover:bg-gray-100 transition" aria-label="关闭菜单">
+          <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <div class="flex flex-col space-y-4">
+          <a href="#home" class="mobile-link text-navy-dark font-medium hover:text-gold transition">首页</a>
+          <a href="#about" class="mobile-link text-navy-dark font-medium hover:text-gold transition">关于</a>
+          <a href="#services" class="mobile-link text-navy-dark font-medium hover:text-gold transition">服务</a>
+          <a href="#pricing" class="mobile-link text-navy-dark font-medium hover:text-gold transition">资费</a>
+          <a href="#team" class="mobile-link text-navy-dark font-medium hover:text-gold transition">团队</a>
+          <a href="#contact" class="mobile-link text-navy-dark font-medium hover:text-gold transition">联系</a>
+          <hr class="border-gray-200">
+          <a href="../index.html" class="flex items-center space-x-2 text-navy-dark font-medium">
+            <img src="../assets/flag-US.png" alt="EN" class="w-5 h-4 rounded-sm"> <span>English</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="menu-overlay" class="fixed inset-0 bg-black/30 z-40 hidden md:hidden"></div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <img src="../assets/img/slider/hotel-1330850_1920.jpg" alt="豪华酒店" class="absolute inset-0 w-full h-full object-cover">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <h1 class="font-display text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 tracking-wide">
+        Oriental Horizon
+      </h1>
+      <p class="text-xl sm:text-2xl md:text-3xl text-blue-100 mb-4 font-light">
+        北京新视野酒店服务有限公司
+      </p>
+      <p class="text-lg md:text-xl text-blue-200 mb-10 tracking-wide">
+        我们帮助酒店盈利并获得成功
+      </p>
+      <a href="#contact" class="inline-block bg-gold hover:bg-gold-light text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+        联系我们
+      </a>
+    </div>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+      <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="py-20 lg:py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Text -->
+        <div class="fade-left">
+          <p class="text-gold font-semibold text-sm uppercase tracking-widest mb-3">关于我们</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-6">关于我们</h2>
+          <div class="section-divider mb-8"></div>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            我们是一群经验丰富的酒店专业人士，可以帮助酒店制定长期持续的收入策略，从而优化业务表现和提高资产价值。我们致力于为客户的需求找到正确的解决方案。
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            我们为重新定位、陷入困境或表现不佳的酒店提供详细的分析和指导，并寻找使资产扭亏为盈的方法。我们访问所有可用的信息，包括数据、策略和结构，并就我们的发现和建议的改进计划提供一份全面的报告。
+          </p>
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="counter text-3xl font-bold text-navy" data-target="10">0</div>
+              <div class="text-sm text-gray-500 mt-1">年经验</div>
+            </div>
+            <div class="text-center">
+              <div class="counter text-3xl font-bold text-navy" data-target="50">0</div>
+              <div class="text-sm text-gray-500 mt-1">服务酒店</div>
+            </div>
+            <div class="text-center">
+              <div class="counter text-3xl font-bold text-navy" data-target="5">0</div>
+              <div class="text-sm text-gray-500 mt-1">核心服务</div>
+            </div>
+          </div>
+        </div>
+        <!-- Image -->
+        <div class="fade-right">
+          <div class="rounded-2xl overflow-hidden shadow-2xl">
+            <img src="../assets/img/slider/bahrain-1369259_1920.jpg" alt="酒店外观" class="w-full h-[400px] object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-gold font-semibold text-sm uppercase tracking-widest mb-3">我们的业务</p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-4">服务项目</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+
+      <div class="bento-grid stagger">
+        <!-- Card 1: 销售市场评估 (spans 2 cols) -->
+        <div class="glass-card rounded-2xl p-8 fade-up">
+          <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy mb-3">销售市场评估</h3>
+          <p class="text-gray-600 leading-relaxed">竞争力分析、当前的定价和销售策略、营销计划评估、渠道表现、销售部署和激励计划、品牌优化。</p>
+        </div>
+
+        <!-- Card 2: 收益和商业策略 -->
+        <div class="glass-card rounded-2xl p-8 fade-up">
+          <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy mb-3">收益和商业策略</h3>
+          <p class="text-gray-600 leading-relaxed">STR分析、市场细分和渠道组合分析、零售定价策略、分销渠道策略、收益管理会、风险和机会的度量、超额促销。</p>
+        </div>
+
+        <!-- Card 3: 酒店客房、餐饮及宴会销售 -->
+        <div class="glass-card rounded-2xl p-8 fade-up">
+          <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy mb-3">酒店客房、餐饮及宴会销售</h3>
+          <p class="text-gray-600 leading-relaxed">利用国内和国际销售网络为酒店提供业务、对销售部门的策略和计划活动作出贡献、提出客户发展计划并定义客户策略。</p>
+        </div>
+
+        <!-- Card 4: 市场 (spans 2 cols) -->
+        <div class="glass-card rounded-2xl p-8 fade-up">
+          <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy mb-3">市场宣传推广</h3>
+          <p class="text-gray-600 leading-relaxed">制定并支持产品的宣传策略、推动市场营销、广告和公共关系活动、公众号运营（微信、微博、抖音、小红书等）、监督酒店摄影的制作和质量。</p>
+        </div>
+
+        <!-- Card 5: 培训和教育 -->
+        <div class="glass-card rounded-2xl p-8 fade-up">
+          <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-navy mb-3">培训和教育</h3>
+          <p class="text-gray-600 leading-relaxed">收益管理、分销管理、销售技巧、市场营销管理、前厅部管理、餐饮管理、如何做Upsell。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING ============ -->
+  <section id="pricing" class="py-20 lg:py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-gold font-semibold text-sm uppercase tracking-widest mb-3">资费方案</p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-4">选择您的方案</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-start stagger">
+        <!-- 基础 -->
+        <div class="glass-card rounded-2xl p-8 fade-up">
+          <h3 class="text-lg font-bold text-navy mb-2">基础方案</h3>
+          <p class="text-gray-500 text-sm mb-6">评估与整改方案</p>
+          <div class="mb-6">
+            <span class="text-3xl font-bold text-navy">CNY 3,000</span>
+            <span class="text-gray-400"> - 10,000 /次</span>
+          </div>
+          <ul class="space-y-3 mb-8 text-gray-600 text-sm">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              市场销售现状评估
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              市场销售整改方案
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              详细分析报告
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              建议行动方案
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center border-2 border-navy text-navy font-semibold py-3 rounded-lg hover:bg-navy hover:text-white transition-all duration-200">
+            开始咨询
+          </a>
+        </div>
+
+        <!-- 专业 (热门) -->
+        <div class="glass-card pricing-popular rounded-2xl p-8 fade-up">
+          <div class="inline-block bg-gold text-white text-xs font-bold px-3 py-1 rounded-full mb-4">热门</div>
+          <h3 class="text-lg font-bold text-navy mb-2">专业方案</h3>
+          <p class="text-gray-500 text-sm mb-6">收益 / 分销 / 市场外包服务</p>
+          <div class="mb-6">
+            <span class="text-3xl font-bold text-navy">CNY 3,000</span>
+            <span class="text-gray-400"> - 15,000 /月</span>
+          </div>
+          <ul class="space-y-3 mb-8 text-gray-600 text-sm">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              收益管理外包服务
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              第三方订房渠道代运营
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              市场宣传推广外包服务
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              每月进展报告
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              专属客户经理
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gold hover:bg-gold-light text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg">
+            开始咨询
+          </a>
+        </div>
+
+        <!-- 企业 -->
+        <div class="glass-card rounded-2xl p-8 fade-up">
+          <h3 class="text-lg font-bold text-navy mb-2">企业方案</h3>
+          <p class="text-gray-500 text-sm mb-6">市场销售部全面外包</p>
+          <div class="mb-6">
+            <span class="text-3xl font-bold text-navy">5% - 20%</span>
+            <span class="text-gray-400"> 酒店营收</span>
+          </div>
+          <ul class="space-y-3 mb-8 text-gray-600 text-sm">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              市场销售部全面外包服务
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              全面收益管理
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              全面分销和市场推广
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              现场培训项目
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              高管战略咨询
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center border-2 border-navy text-navy font-semibold py-3 rounded-lg hover:bg-navy hover:text-white transition-all duration-200">
+            联系我们
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section id="team" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-gold font-semibold text-sm uppercase tracking-widest mb-3">核心团队</p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-4">领导团队</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger">
+        <!-- Hillary Tang -->
+        <div class="team-card glass-card rounded-2xl overflow-hidden text-center fade-up">
+          <div class="h-48 overflow-hidden bg-gradient-to-b from-navy/5 to-navy/10">
+            <img src="../assets/img/team/member3.png" alt="Hillary Tang" class="team-img w-full h-full object-contain">
+          </div>
+          <div class="p-6">
+            <h4 class="font-bold text-navy text-lg">Hillary Tang</h4>
+            <p class="text-gold text-sm font-medium">首席执行官（CEO）</p>
+            <p class="text-gray-500 text-xs mt-2">超过10年酒店管理经验，先后服务于Hilton, Marriott, IHG等国际联号集团</p>
+          </div>
+        </div>
+
+        <!-- Rachel Liu -->
+        <div class="team-card glass-card rounded-2xl overflow-hidden text-center fade-up">
+          <div class="h-48 overflow-hidden bg-gradient-to-b from-navy/5 to-navy/10">
+            <img src="../assets/img/team/member1.png" alt="Rachel Liu" class="team-img w-full h-full object-contain">
+          </div>
+          <div class="p-6">
+            <h4 class="font-bold text-navy text-lg">Rachel Liu</h4>
+            <p class="text-gold text-sm font-medium">首席营销官（CMO）</p>
+            <p class="text-gray-500 text-xs mt-2">精通电商平台、OTA评分管理、市场推广、品牌设计及活动策划</p>
+          </div>
+        </div>
+
+        <!-- Izzie Sun -->
+        <div class="team-card glass-card rounded-2xl overflow-hidden text-center fade-up">
+          <div class="h-48 overflow-hidden bg-gradient-to-b from-navy/5 to-navy/10">
+            <img src="../assets/img/team/member4.png" alt="Izzie Sun" class="team-img w-full h-full object-contain">
+          </div>
+          <div class="p-6">
+            <h4 class="font-bold text-navy text-lg">Izzie Sun</h4>
+            <p class="text-gold text-sm font-medium">首席营运官（COO）</p>
+            <p class="text-gray-500 text-xs mt-2">多年酒店工作经验，熟悉酒店内部运营流程</p>
+          </div>
+        </div>
+
+        <!-- Cookshell Hong -->
+        <div class="team-card glass-card rounded-2xl overflow-hidden text-center fade-up">
+          <div class="h-48 overflow-hidden bg-gradient-to-b from-navy/5 to-navy/10">
+            <img src="../assets/img/team/member2.png" alt="Cookshell Hong" class="team-img w-full h-full object-contain">
+          </div>
+          <div class="p-6">
+            <h4 class="font-bold text-navy text-lg">Cookshell Hong</h4>
+            <p class="text-gold text-sm font-medium">首席技术官（CTO）</p>
+            <p class="text-gray-500 text-xs mt-2">多年互联网大厂工作经验，平台搭建、网站/小程序开发及维护</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS / TRUST ============ -->
+  <section id="clients" class="py-20 lg:py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-gold font-semibold text-sm uppercase tracking-widest mb-3">我们的客户</p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-4">我们的合作伙伴</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 stagger">
+        <!-- 单体酒店 -->
+        <div class="glass-card rounded-2xl p-6 text-center fade-up">
+          <div class="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2 22h20M6 22V4a2 2 0 012-2h8a2 2 0 012 2v18M10 6h4M10 10h4M10 14h4M10 18h4"/>
+            </svg>
+          </div>
+          <h4 class="font-bold text-navy text-sm">单体酒店</h4>
+        </div>
+
+        <!-- 管理公司 -->
+        <div class="glass-card rounded-2xl p-6 text-center fade-up">
+          <div class="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+            </svg>
+          </div>
+          <h4 class="font-bold text-navy text-sm">管理公司</h4>
+        </div>
+
+        <!-- 酒店业主 -->
+        <div class="glass-card rounded-2xl p-6 text-center fade-up">
+          <div class="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zm14 10v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h4 class="font-bold text-navy text-sm">酒店业主</h4>
+        </div>
+
+        <!-- 房地产开发商 -->
+        <div class="glass-card rounded-2xl p-6 text-center fade-up">
+          <div class="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2 22h20M17 22V6l-5-4-5 4v16M7 10h2M7 14h2M11 10h2M11 14h2M15 10h2M15 14h2"/>
+            </svg>
+          </div>
+          <h4 class="font-bold text-navy text-sm">房地产开发商</h4>
+        </div>
+
+        <!-- 投资公司 -->
+        <div class="glass-card rounded-2xl p-6 text-center fade-up">
+          <div class="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+            </svg>
+          </div>
+          <h4 class="font-bold text-navy text-sm">投资公司</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <p class="text-gold font-semibold text-sm uppercase tracking-widest mb-3">联系方式</p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-navy mb-4">联系我们</h2>
+        <div class="section-divider mx-auto"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Contact Info -->
+        <div class="fade-left space-y-6">
+          <div class="glass-card rounded-2xl p-8">
+            <div class="flex items-start space-x-4 mb-6">
+              <div class="w-10 h-10 bg-navy/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-navy mb-1">地址</h4>
+                <p class="text-gray-600 text-sm">北京市石景山区实兴大街30号院3号楼2层C-1123</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 mb-6">
+              <div class="w-10 h-10 bg-navy/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-navy mb-1">电话</h4>
+                <p class="text-gray-600 text-sm">+86 137 8090 6938</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 mb-6">
+              <div class="w-10 h-10 bg-navy/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-navy mb-1">邮件</h4>
+                <p class="text-gray-600 text-sm">business@orientalhorizon.com.cn</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="w-10 h-10 bg-navy/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-navy mb-1">LinkedIn</h4>
+                <a href="https://www.linkedin.com/in/oriental-horizon-hotel-services-a89b24248/" target="_blank" rel="noopener" class="text-navy-light text-sm hover:text-gold transition">Oriental Horizon Hotel Services</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WeChat QR -->
+        <div class="fade-right text-center">
+          <div class="glass-card rounded-2xl p-8 inline-block">
+            <p class="text-navy font-bold text-lg mb-4">扫码添加企业微信</p>
+            <img src="../assets/img/social-icons/wechat_business.png" alt="企业微信二维码" class="mx-auto max-w-[280px] rounded-lg">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-navy text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-12">
+        <!-- Company Info -->
+        <div>
+          <h3 class="font-display text-2xl font-bold mb-4">Oriental Horizon</h3>
+          <p class="text-blue-200 text-sm leading-relaxed mb-2">北京新视野酒店服务有限公司</p>
+          <p class="text-blue-200 text-sm leading-relaxed mb-4">我们帮助酒店盈利并获得成功。经验丰富的酒店专业人士提供收入策略、销售市场外包和培训服务。</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-bold text-lg mb-4">快速链接</h4>
+          <ul class="space-y-2 text-blue-200 text-sm">
+            <li><a href="#home" class="hover:text-gold transition">首页</a></li>
+            <li><a href="#about" class="hover:text-gold transition">关于</a></li>
+            <li><a href="#services" class="hover:text-gold transition">服务</a></li>
+            <li><a href="#pricing" class="hover:text-gold transition">资费</a></li>
+            <li><a href="#team" class="hover:text-gold transition">团队</a></li>
+            <li><a href="#contact" class="hover:text-gold transition">联系</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div>
+          <h4 class="font-bold text-lg mb-4">关注我们</h4>
+          <div class="flex space-x-4">
+            <a href="https://www.linkedin.com/in/oriental-horizon-hotel-services-a89b24248/" target="_blank" rel="noopener" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-gold transition" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:business@orientalhorizon.com.cn" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-gold transition" aria-label="邮件">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </a>
+          </div>
+          <div class="mt-6">
+            <a href="../index.html" class="inline-flex items-center space-x-2 text-blue-200 hover:text-gold transition text-sm">
+              <img src="../assets/flag-US.png" alt="EN" class="w-5 h-4 rounded-sm">
+              <span>View in English</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 mt-12 pt-8 text-center text-blue-300 text-sm">
+        &copy; 2024 北京新视野酒店服务有限公司 版权所有
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // Mobile Menu
+    const menuBtn = document.getElementById('menu-btn');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Intersection Observer for fade animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Counter Animation
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.dataset.target);
+          const suffix = counter.dataset.suffix || '';
+          let current = 0;
+          const step = target / 40;
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            counter.textContent = Math.round(current) + suffix;
+          }, 40);
+          counterObserver.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => {
+      counterObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
